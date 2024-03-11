@@ -193,6 +193,10 @@
       text-align: center;
     }
 
+    .goal {
+      padding-bottom: 10px;
+    }
+
     .donation-meter .goal {
       font-size: 30px;
     }
@@ -293,8 +297,16 @@
       }
     }
   </style>
+    <script>
+      function myFunction() {
+        let number = 3731;
+        let string = '$' + number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        let percentage = number/15000
+        document.getElementById("changeme").innerHTML = string;
+      }
+    </script>
 </head>
-<body>
+<body onload="myFunction()">
   <div class="area">
     <ul class="circles">
       <li></li>
@@ -314,7 +326,7 @@
     <strong>Our Goal</strong>
     <strong class="goal">$15,000</strong>
     <span class="glass">
-        <strong class="total" style="bottom: 30%">$3,514</strong>
+        <strong id="changeme" class="total" style="bottom: 30%"></strong>
         <span class="amount"></span>
     </span>
     <div class="bulb">
