@@ -1,6 +1,9 @@
 @import "compass/css3";
 
 body {
+  height:100vh;
+  width:100vw;
+  overflow:hidden;
   font-family: Helvetica; 
 }
 
@@ -25,7 +28,6 @@ body {
     position: absolute;
      bottom: 5px;
   }
-  strong { display: block; text-align: center; }
   .goal {
     font-size: 30px;
   }
@@ -65,4 +67,72 @@ body {
       right: -15px;
     z-index: 30;
   }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.rocket {
+  --animate-delay: 1s;
+  animation: rocket-launch 1.6s ease-out var(--animate-delay) 1 normal forwards;
+  opacity: 0;
+}
+
+.burst > div {
+  --animate-delay: 1.5s;
+  animation: blast 750ms ease-in var(--animate-delay) 1 normal forwards;
+  opacity: 0;
+}
+
+@keyframes rocket-launch {
+  from {
+      height: 9rem;
+  }
+  60%, to {
+      height: 0rem;
+      transform: translateY(0rem);
+  }
+  from, 60%, to {
+      opacity: 1;
+  }
+  to {
+      display: none;
+  }
+}
+
+@keyframes blast {
+  from {
+      width: 0.5rem;
+      opacity: 1;
+  }
+  60% {
+      width: 100%;
+      opacity: 1;
+  }
+  to {
+      width: 100%;
+      opacity: 0;
+  }
+}
+
+body {
+  margin: 0;
+  background: #020202;
+  cursor: crosshair;
+}
+canvas{display:block}
+h1 {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  color: #fff;
+  font-family: "Source Sans Pro";
+  font-size: 4em;
+  font-weight: 900;
+  -webkit-user-select: none;
+  user-select: none;
 }
